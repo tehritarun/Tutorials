@@ -115,6 +115,27 @@ mkdir .local/share/zsh
 touch .local/share/zsh/histor
 ```
 
+## Docker Setup
+
+- Create new group docker
+
+``` bash
+sudo groupadd docker
+```
+
+- Add user to docker group
+
+``` bash
+sudo usermod -aG docker $USER
+```
+
+- Logout and log back in or run following to load new group setting
+
+``` bash
+
+newgrp docker
+```
+
 ## Tmux Setup
 
 - Install tmux
