@@ -112,7 +112,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git powerlevel10k
 
 ``` bash
 mkdir .local/share/zsh
-touch .local/share/zsh/histor
+touch .local/share/zsh/history
 ```
 
 ## Docker Setup
