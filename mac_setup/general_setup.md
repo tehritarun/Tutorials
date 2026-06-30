@@ -16,5 +16,3 @@
 ## Install application
 
 - [ ] Browser
-- [ ] Local send
-- [ ] Homebrew

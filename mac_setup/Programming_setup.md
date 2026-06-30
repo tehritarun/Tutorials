@@ -81,6 +81,11 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 - [ ] Dotfiles
+- [ ] Tmux-sess
+
+``` bash
+https://github.com/tehritarun/tmux-sess
+```
 
 ## Other terminal applications
 
@@ -91,10 +96,11 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 - [ ] Jq
 - [ ] Jless
 - [ ] Zoxide
+- [ ] Yazi
 - [ ] OBS-Studio
 - [ ] Localsend
 
 ``` bash
-brew install tree btop bat fzf jq jless zoxide
+brew install tree btop bat fzf jq jless zoxide yazi
 brew install --cask obs-studio localsend
 ```
