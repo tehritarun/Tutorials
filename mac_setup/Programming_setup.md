@@ -9,6 +9,11 @@ https://brew.sh/
 ## Git Setup
 
 - [ ] Install git
+
+```bash
+brew install git
+```
+
 - [ ] Setup gitconfig
 
 ``` bash
@@ -22,6 +27,12 @@ git config --global user.email "tehritarun@gmail.com"
 ssh-keygen -t ed25519 -C "tehritarun@gmail.com"
 ```
 
+- [ ] Install lazygit
+
+``` bash
+brew install lazygit
+```
+
 ## Python Setup
 
 - [ ] Install UV
@@ -29,6 +40,11 @@ ssh-keygen -t ed25519 -C "tehritarun@gmail.com"
 - [ ] Setup ruff
 - [ ] VScode setup
 - [ ] Neovim setup
+
+``` bash
+brew install git uv ruff neovim golang
+brew install --cask visual-studio-code
+```
 
 ## Golang Setup
 
@@ -40,11 +56,19 @@ ssh-keygen -t ed25519 -C "tehritarun@gmail.com"
 
 - [ ] Install docker desktop
 
+``` bash
+brew install --cask docker
+```
+
 ## Setup Terminal app and prompt
 
 - [ ] Install ghostty
 - [ ] Clone zshrc from dotfiles
 - [ ] Install nerdfont
+
+``` bash
+brew install --cask ghostty font-fira-code-nerd-font
+```
 
 ## TMUX Setup
 
@@ -52,6 +76,7 @@ ssh-keygen -t ed25519 -C "tehritarun@gmail.com"
 - [ ] TPM install
 
 ``` bash
+brew install tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
@@ -59,10 +84,17 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## Other terminal applications
 
-- [ ] Lazygit
+- [ ] Tree
 - [ ] Btop
+- [ ] Bat
+- [ ] Fzf
 - [ ] Jq
 - [ ] Jless
-- [ ] Tree
 - [ ] Zoxide
 - [ ] OBS-Studio
+- [ ] Localsend
+
+``` bash
+brew install tree btop bat fzf jq jless zoxide
+brew install --cask obs-studio localsend
+```
