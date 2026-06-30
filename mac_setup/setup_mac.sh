@@ -54,3 +54,5 @@ git clone git@github.com:tehritarun/tmux-sess.git
 cd tmux-sess
 ./setup.sh
 source ${ZDOTDIR:-$HOME}/.zshrc
+
+echo " Please go to dotfiles and run setup for VSCode "
