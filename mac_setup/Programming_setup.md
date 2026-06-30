@@ -2,7 +2,7 @@
 
 ## Install and setup Homebrew
 
-```
+``` bash
 https://brew.sh/
 ```
 
@@ -10,7 +10,7 @@ https://brew.sh/
 
 - [ ] Install git
 
-```bash
+``` bash
 brew install git
 ```
 
@@ -30,7 +30,7 @@ ssh-keygen -t ed25519 -C "tehritarun@gmail.com"
 - [ ] Install lazygit
 
 ``` bash
-brew install lazygit
+brew install lazygit stow
 ```
 
 ## Python Setup
