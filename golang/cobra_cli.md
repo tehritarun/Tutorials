@@ -72,7 +72,38 @@ This will generate boilerplate code for the root command along with the followin
 ### Root Command
 The code for the root command is located in `cmd/root.go`. Update its contents as shown below:
 
-![Root Command Implementation](./media/root_go.png)
+``` go
+package cmd
+
+import (
+	"fmt"
+	"os"
+
+	"github.com/spf13/cobra"
+)
+
+// rootCmd represents the base command when called without any subcommands
+var rootCmd = &cobra.Command{
+	Use:   "mathctl",
+	Short: "mathctl is cli tool for basic computation",
+	Long:  `A sample CLI project with subcommands and flags using Go Cobra framework.`,
+
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("Welcome to mathctl! run 'mathctl --help' to usage instructions.")
+	},
+}
+
+// Execute adds all child commands to the root command and sets flags appropriately.
+// This is called by main.main(). It only needs to happen once to the rootCmd.
+func Execute() {
+	err := rootCmd.Execute()
+	if err != nil {
+		os.Exit(1)
+	}
+}
+
+func init() {}
+```
 
 ### Running the CLI
 At this point, you can build and run the CLI using the following commands in your terminal:
@@ -100,7 +131,30 @@ This will generate two files under the `cmd` folder corresponding to each subcom
 The `greet` subcommand greets the user by name, accepting the name as an input parameter.
 The code for the `greet` subcommand is located in `cmd/greet.go`. Update its contents as shown below:
 
-![Greet Subcommand Implementation](./media/greet_go.png)
+``` go
+package cmd
+
+import (
+	"fmt"
+
+	"github.com/spf13/cobra"
+)
+
+// greetCmd represents the greet command
+var greetCmd = &cobra.Command{
+	Use:   "greet [name]",
+	Short: "Greets the user by name",
+	Args:  cobra.ExactArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
+		name := args[0]
+		fmt.Printf("Hello %s! Welcome to mathctl, A Cobra CLI application.\n", name)
+	},
+}
+
+func init() {
+	rootCmd.AddCommand(greetCmd)
+}
+```
 
 After updating the subcommand code, you can build and run it:
 
@@ -111,7 +165,52 @@ The `add` subcommand demonstrates how to process positional arguments and parse 
 
 The code for the `add` subcommand is located in `cmd/add.go`. Update its contents as shown below:
 
-![Add Subcommand Implementation](./media/add_go.png)
+``` go
+package cmd
+
+import (
+	"fmt"
+	"os"
+	"strconv"
+
+	"github.com/spf13/cobra"
+)
+
+var verbose bool
+
+// addCmd represents the add command
+var addCmd = &cobra.Command{
+	Use:   "add [num1] [num2]",
+	Short: "Adds two numeric string together",
+	Args:  cobra.ExactArgs(2),
+	Run: func(cmd *cobra.Command, args []string) {
+		val_1, err := strconv.Atoi(args[0])
+		if err != nil {
+			fmt.Printf("Invalid first number: %s\n", err)
+			os.Exit(1)
+		}
+		val_2, err := strconv.Atoi(args[1])
+		if err != nil {
+			fmt.Printf("Invalid second number: %s\n", err)
+			os.Exit(1)
+		}
+		result := val_1 + val_2
+
+		if verbose {
+			fmt.Printf("Calculating: %d + %d\n", val_1, val_2)
+			fmt.Printf("Result: ")
+		}
+		fmt.Println(result)
+	},
+}
+
+func init() {
+	rootCmd.AddCommand(addCmd)
+
+	// Define local boolean flag
+	addCmd.Flags().BoolVarP(&verbose, "verbose", "v", false, "Display detailed value logs")
+}
+```
 
 > **💡 Key Takeaway**:
 > - **Flags**: `cmd.Flags().BoolVarP(&verbose, "verbose", "v", false, "Enable verbose logging")` binds local short (`-v`) and long (`--verbose`) flags.
