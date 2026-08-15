@@ -37,7 +37,8 @@ From within golang project directory run following command
 ``` bash
 cobra-cli init
 ```
-It will generate code with following folder structure
+
+This will generate boilerplate code for root command and following folder structure. at this point you can open this project in code editor of your choice.
 
 ```
 .
@@ -46,14 +47,25 @@ It will generate code with following folder structure
 ├── go.mod
 ├── go.sum
 ├── LICENSE
-├── main.go
-└── mathctl
+└── main.go
 ```
 
 ### Root command
 Code for root command will be under `cmd/root.go`. Update it's contents as below
 
 ![[./media/root_go.png]]
+
+### Running CLI
+At this point you can build and run CLI using following command in terminal
+
+``` bash
+go build
+./mathctl
+```
+
+You should get following output
+
+![[./media/root_execution.png]]
 
 ## Add subcommands
 Subcommands can be added using `cobra-cli add` command. In following example two subcommands `greet` and `add` are added.
@@ -71,8 +83,16 @@ Code for greet subcommand will be under `cmd/greet.go`. Update it's contents as 
 
 ![[./media/greet_go.png]]
 
+After updating subcommands code you can build and run this subcommand
+
+![[./media/greet_execution.png]]
+
 ### Subcommand - add
 add subcommand adds two numbers provided as input parameters. it also takes optional `-v` flag for logging verbosity.
 Code for add subcommand will be under `cmd/add.go`. Update it's contents as below
 
 ![[./media/add_go.png]]
+
+You can test this subcommand as below. Also you can try other combination of flags and input parameters.
+
+![[./media/add_execution.png]]
