@@ -1,14 +1,31 @@
-# Creating golang cli with Cobra
+# Building a Powerful CLI Application in Go with Cobra
+
+## Introduction
+**Cobra** is one of the most widely used libraries in Go for building modern, robust Command Line Interface (CLI) applications. It powers many industry-standard developer tools, including **Kubernetes (`kubectl`)**, **GitHub CLI (`gh`)**, **Hugo**, and **Docker CLI**.
+
+### Core Concepts
+Cobra structures CLI applications around a simple, intuitive pattern:
+- **Commands**: Represent actions to perform (e.g., `git clone`, `mathctl add`).
+- **Args**: Represent items or values passed to commands (e.g., file paths, names).
+- **Flags**: Represent modifiers or configuration options for actions (e.g., `--verbose`, `-p 8080`).
+
+### Key Features
+- **Nested Subcommands**: Easily build complex command hierarchies.
+- **POSIX-Compliant Flags**: Support for both short (`-v`) and long (`--verbose`) flags.
+- **Automated Help & Documentation**: Automatically generates `-h` / `--help` menus and man pages.
+- **Intelligent Suggestions**: Provides "did you mean?" suggestions on misspelled commands.
+- **Viper Integration**: Native compatibility with Viper for handling configs (YAML, JSON, ENV variables).
+- **Code Generator**: The `cobra-cli` generator tool enables rapid scaffolding of projects and subcommands.
 
 ## Installation
-cobra-cli can be insalled using go with following command
+The `cobra-cli` tool can be installed using Go with the following command:
 
 ``` bash
 go install github.com/spf13/cobra-cli@latest
 ```
 
-## Initial configuration
-configuration file can be created at `~/.cobra.yaml` with contents as below:
+## Initial Configuration
+An initial configuration file can be created at `~/.cobra.yaml` with the following contents:
 
 ``` yaml
 author: Tarun Tehri <tehritarun@gmail.com>
@@ -16,8 +33,8 @@ year: 2026
 license: MIT
 ```
 
-## Create golang project
-Create a new directory and initiate golang project
+## Create Go Project
+Create a new directory and initialize the Go project:
 
 ``` bash
 mkdir project_name
@@ -25,20 +42,20 @@ cd project_name
 go mod init project_name
 ```
 
-## Install cobra library
+## Install Cobra Library
 
 ``` bash
 go get -u github.com/spf13/cobra@latest
 ```
 
-## Create cobra project scaoffold
-From within golang project directory run following command
+## Create Cobra Project Scaffold
+From within the Go project directory, run the following command:
 
 ``` bash
 cobra-cli init
 ```
 
-This will generate boilerplate code for root command and following folder structure. at this point you can open this project in code editor of your choice.
+This will generate boilerplate code for the root command along with the following folder structure. At this point, you can open this project in your preferred code editor.
 
 ```
 .
@@ -50,49 +67,54 @@ This will generate boilerplate code for root command and following folder struct
 └── main.go
 ```
 
-### Root command
-Code for root command will be under `cmd/root.go`. Update it's contents as below
+### Root Command
+The code for the root command is located in `cmd/root.go`. Update its contents as shown below:
 
-![[./media/root_go.png]]
+![[./golang/media/root_go.png]]
 
-### Running CLI
-At this point you can build and run CLI using following command in terminal
+### Running the CLI
+At this point, you can build and run the CLI using the following commands in your terminal:
 
 ``` bash
 go build
 ./mathctl
 ```
 
-You should get following output
+You should see the following output:
 
-![[./media/root_execution.png]]
+![[./golang/media/root_execution.png]]
 
-## Add subcommands
-Subcommands can be added using `cobra-cli add` command. In following example two subcommands `greet` and `add` are added.
+## Add Subcommands
+Subcommands can be added using the `cobra-cli add` command. In the following example, two subcommands (`greet` and `add`) are added:
 
 ``` bash
 cobra-cli add greet
 cobra-cli add add
 ```
 
-This will generate 2 files with same name as subcommands under `cmd` folder corresponding to each subcommand.
+This will generate two files under the `cmd` folder corresponding to each subcommand.
 
-### Subcommand - greet
-greet subcommand simply greets user by name by getting name as input parameter.
-Code for greet subcommand will be under `cmd/greet.go`. Update it's contents as below
+### Subcommand — greet
+The `greet` subcommand greets the user by name, accepting the name as an input parameter.
+The code for the `greet` subcommand is located in `cmd/greet.go`. Update its contents as shown below:
 
-![[./media/greet_go.png]]
+![[./golang/media/greet_go.png]]
 
-After updating subcommands code you can build and run this subcommand
+After updating the subcommand code, you can build and run it:
 
-![[./media/greet_execution.png]]
+![[./golang/media/greet_execution.png]]
 
-### Subcommand - add
-add subcommand adds two numbers provided as input parameters. it also takes optional `-v` flag for logging verbosity.
-Code for add subcommand will be under `cmd/add.go`. Update it's contents as below
+### Subcommand — add
+The `add` subcommand adds two numbers provided as input parameters. It also accepts an optional `-v` flag for log verbosity.
+The code for the `add` subcommand is located in `cmd/add.go`. Update its contents as shown below:
 
-![[./media/add_go.png]]
+![[./golang/media/add_go.png]]
 
-You can test this subcommand as below. Also you can try other combination of flags and input parameters.
+You can test this subcommand as shown below. You can also experiment with different combinations of flags and input parameters:
 
-![[./media/add_execution.png]]
+![[./golang/media/add_execution.png]]
+
+Similarly, you can use the `cobra-cli add` command to implement additional subcommands such as multiply, divide, and more.
+
+## Verdict
+Cobra is a powerful and easy-to-use framework for building CLIs in Go. It provides a clean, intuitive pattern for organizing commands, arguments, and flags, backed by a rich feature set that makes it a top choice for CLI applications of any size and complexity.
