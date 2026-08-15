@@ -37,7 +37,7 @@ From within golang project directory run following command
 ``` bash
 cobra-cli init
 ```
-It will generate code with following files
+It will generate code with following folder structure
 
 ```
 .
@@ -50,6 +50,11 @@ It will generate code with following files
 └── mathctl
 ```
 
+### Root command
+Code for root command will be under `cmd/root.go`. Update it's contents as below
+
+![[./media/root_go.png]]
+
 ## Add subcommands
 Subcommands can be added using `cobra-cli add` command. In following example two subcommands `greet` and `add` are added.
 
@@ -58,3 +63,16 @@ cobra-cli add greet
 cobra-cli add add
 ```
 
+This will generate 2 files with same name as subcommands under `cmd` folder corresponding to each subcommand.
+
+### Subcommand - greet
+greet subcommand simply greets user by name by getting name as input parameter.
+Code for greet subcommand will be under `cmd/greet.go`. Update it's contents as below
+
+![[./media/greet_go.png]]
+
+### Subcommand - add
+add subcommand adds two numbers provided as input parameters. it also takes optional `-v` flag for logging verbosity.
+Code for add subcommand will be under `cmd/add.go`. Update it's contents as below
+
+![[./media/add_go.png]]
